@@ -1,34 +1,52 @@
 # DSA Visualizer
 
-An interactive Data Structures and Algorithms visualizer built with Modern C++ (C++17), Raylib, React, TypeScript, Vite, and Tailwind CSS. This project explores fundamental concepts in sorting, pathfinding, graph algorithms, competitive programming, and state-machine simulation through real-time interactive visualizers.
+An interactive Data Structures and Algorithms visualizer built with Modern C++ (C++17), Raylib, React, TypeScript, Vite, and Tailwind CSS. This project explores fundamental concepts in sorting, graph traversal, competitive programming problem solving, and state-machine simulation through real-time interactive visualizers.
+
+---
+
+## Included Algorithms & Modules
+
+### 1. Sorting Algorithms
+- **Bubble Sort**: Step-by-step adjacent element comparisons, swapping animations, and lock-in pass completion states.
+- **Quick Sort (Lomuto Partitioning)**: Pivot selection, index pointer partitioning (`i` & `j`), and recursive subarray range tracking.
+- **Merge Sort**: Divide and conquer array splitting, recursive range division, and sequential merged subarray rebuilding.
+- **Custom Script Execution**: Interactive custom code trace parser for step-by-step line highlighting and array mutation.
+
+### 2. Graph Algorithms & Shortest Path Discovery
+- **Breadth-First Search (BFS / Message Route - CSES 1667)**: Level-order network graph traversal, FIFO queue visualization, visited tracking, and shortest path reconstruction from computer 1 to computer N.
+- **Depth-First Search (DFS)**: Recursive stack-based graph exploration, call stack tracing, and node discovery order visualization.
+
+### 3. Searching & Competitive Programming Algorithms
+- **Binary Search (Factory Machines - CSES 1620)**: Search space halving on ordered domains with `low`, `high`, and `mid` pointer tracking.
+- **N-Queens Backtracking (Chessboard & Queens - CSES 1624)**: Constraint satisfaction algorithm placing 8 queens on an 8x8 grid with row, column, and diagonal collision checks.
+- **Greedy Activity Selection (Movie Festival - CSES 1629)**: Interval scheduling algorithm selecting maximal non-overlapping intervals sorted by finish times.
+
+### 4. C++ Architecture & CP Utilities
+- **Abstract `IAlgorithm` Interface**: Object-oriented base class strategy enforcing non-blocking, frame-by-frame state-machine transitions (`Step()`, `Reset()`, `IsComplete()`).
+- **C++ Sorting Visualizer Engine**: Raylib C++ state machine preserving loop state variables (`m_currentI`, `m_currentJ`) across render cycles.
+- **Competitive Programming Fast I/O Boilerplate (`cp_template.cpp`)**: Industry-standard fast input/output stream decoupling (`sync_with_stdio(false)`), type aliases, and multi-testcase solver.
+- **Coordinate Compression Utility (`coord_compress.cpp`)**: Mapping sparse values up to 10^9 into contiguous ranks `[0, U-1]` using `std::sort`, `std::unique`, and `std::lower_bound` for Segment and Fenwick Trees.
 
 ---
 
 ## Features
 
-### Phase 1: Sorting Algorithms
-- Interactive array visualization with active comparison & swap highlighting
-- Bubble Sort, Quick Sort (pivot state tracking), and Merge Sort
+### Phase 1: Sorting Arena
+- Interactive array visualization with active comparison & swap color highlights
+- Multi-language source code synchronization (C++, Java, Python, JavaScript)
 - Custom dataset generation (Random, Descending, Ascending)
-- Real-time speed adjustment and step-by-step frame execution
+- Step-by-step playback deck (Play, Pause, Single Step, Reset, Speed Slider)
 
-### Phase 2: Pathfinding & Graph Algorithms
-- Dijkstra's Algorithm for weighted shortest path discovery
-- A* Search with Heuristic cost function optimization
-- Breadth-First Search (BFS / Message Route) for unweighted networks
-- Interactive grid matrix creation with draggable start/end nodes and wall painting
+### Phase 2: DSA Problem Arena
+- Interactive 8-node network graph canvas with real-time queue/stack states
+- Live problem statement reader with constraints, input/output formats, and source tags (CSES)
+- Real-time memory and execution metrics tracking
+- Multi-language source code previewer with active line highlighting
 
-### Phase 3: Competitive Programming & Stress Testing
-- Custom C++ script inspection and interactive problem suite
-- Real-time execution metrics (comparison counters, array accesses, time complexity)
-- Interactive control deck: Play, Pause, Single-Step, and Reset triggers
-- Dynamic state machine debugging
-
-### Phase 4: Modern C++ Architecture
-- Object-Oriented Design (OOD) strictly decoupling algorithm logic from presentation
-- Abstract `IAlgorithm` interface strategy enabling frame-by-frame scheduling
-- Memory-safe state retention per `Update()` cycle
-- Modular Raylib rendering engine architecture
+### Phase 3: Modern C++ Code Explorer
+- Built-in code editor & viewer with file tree navigation
+- Clean separation of header specifications (`.hpp`) and implementation files (`.cpp`)
+- Integrated CMake build configuration and Raylib graphics engine examples
 
 ---
 
@@ -40,7 +58,7 @@ An interactive Data Structures and Algorithms visualizer built with Modern C++ (
 - CMake Build System
 
 ### Frontend & Web App
-- React
+- React 18
 - TypeScript
 - Vite
 
@@ -66,25 +84,18 @@ Algorithms implement step-based scheduling rather than blocking recursion:
 class IAlgorithm {
 public:
     virtual ~IAlgorithm() = default;
-    virtual void Update() = 0;
-    virtual bool IsFinished() const = 0;
+    virtual bool Step() = 0;
     virtual void Reset() = 0;
+    virtual bool IsComplete() const = 0;
+    virtual const char* GetStatus() const = 0;
 };
 ```
 
 Where:
 
-- `Update()` = advances algorithm by exactly one state transition
-- `IsFinished()` = checks if sorting or pathfinding is complete
+- `Step()` = advances algorithm by exactly one logical state transition
+- `IsComplete()` = checks if sorting or graph traversal is finished
 - `Reset()` = restores dataset and pointers to original state
-
-### Complexity Analysis
-
-The simulator tracks:
-
-- Comparison count
-- Array reads / writes
-- Path length and visited nodes
 
 ---
 
@@ -98,19 +109,11 @@ src/
 │   └── SortingArena.tsx
 ├── data/
 │   └── cpp_code.ts
+├── utils/
+│   ├── algorithms.ts
+│   └── dsaAlgorithms.ts
 ├── App.tsx
 └── main.tsx
-
-cpp/
-├── include/
-│   ├── IAlgorithm.hpp
-│   ├── SortingVisualizer.hpp
-│   └── GridVisualizer.hpp
-└── src/
-    ├── BubbleSort.cpp
-    ├── QuickSort.cpp
-    ├── Dijkstra.cpp
-    └── main.cpp
 ```
 
 ---
@@ -173,16 +176,14 @@ npm run preview
 
 ## Implemented Features
 
-- [x] Interactive 2D array and grid rendering
-- [x] Real-time simulation controls (Play, Pause, Step, Reset)
-- [x] Adjustable simulation speed and custom presets
-- [x] Sorting algorithms (Bubble, Quick, Merge)
-- [x] Pathfinding algorithms (Dijkstra, A*, BFS)
-- [x] Interactive obstacle painting and node placement
-- [x] Real-time comparison and array access metrics
-- [x] Frame-by-frame state machine execution
-- [x] Modern C++ (C++17) interface and architecture
-- [x] Interactive C++ code explorer & Competitive Programming suite
+- [x] **Sorting Algorithms**: Bubble Sort, Quick Sort (Lomuto), Merge Sort, Custom Scripting
+- [x] **Graph Traversal Algorithms**: Breadth-First Search (BFS), Depth-First Search (DFS)
+- [x] **Searching Algorithms**: Binary Search (Search space reduction)
+- [x] **Backtracking Algorithms**: N-Queens (Grid constraint satisfaction)
+- [x] **Greedy Algorithms**: Activity Selection (Interval scheduling)
+- [x] **C++ Engine & Utilities**: Raylib state-machine visualizer, Coordinate Compression, CP Fast I/O Template
+- [x] Interactive real-time playback controls (Play, Pause, Single Step, Speed Control)
+- [x] Code synched line-by-line highlight viewer in C++, Java, Python, and JavaScript
 
 ---
 
