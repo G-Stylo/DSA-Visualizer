@@ -1,0 +1,6 @@
+{
+  "name": "C++ DSA Visualizer Architecture Guide",
+  "description": "An interactive 3-column Competitive Programming workspace with interactive problem statements, variable state inspectors, a real-time C++, Java, and Python code walkthrough tracer, and visualizations for BFS, DFS, Binary Search, Complete Search, and Greedy algorithms.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
