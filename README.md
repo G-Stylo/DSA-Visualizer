@@ -4,14 +4,6 @@ An interactive Data Structures and Algorithms visualizer built with Modern C++ (
 
 ---
 
-## 🌐 Live Web Page Access
-
-You can run and interact with the full application directly on the web without downloading or running software locally:
-
-**Live Web App:** [https://G-Stylo.github.io/cpp-dsa-visualizer/](https://G-Stylo.github.io/cpp-dsa-visualizer/)
-
----
-
 ## Included Algorithms & Modules
 
 ### 1. Sorting Algorithms
@@ -126,28 +118,7 @@ src/
 
 ---
 
-## 🚀 Running on the Web
-
-This application is built as a single-page client-side web app (SPA). It requires **no backend server** and **no local native dependencies**—all visualizers, state machines, and algorithms execute 100% in the client's web browser.
-
-### GitHub Pages Branch Deployment
-
-This repository is configured for GitHub Pages' built-in **Deploy from a branch** option—no GitHub Actions workflow is used or required.
-
-1. Install dependencies and create the publishable site:
-   ```bash
-   npm install
-   npm run deploy:prepare
-   ```
-   This creates the static site in the tracked `docs/` directory.
-2. Commit and push both the source files and the generated `docs/` directory to the branch you want to publish (typically `main`).
-3. On GitHub, open **Settings → Pages**, choose **Deploy from a branch**, then select that branch and the **`/docs`** folder. Save the setting.
-
-GitHub will publish the site at `https://<owner>.github.io/<repository>/`. Run `npm run deploy:prepare` again and commit the updated `docs/` files whenever the app changes.
-
----
-
-## 🛠️ Optional Local Development
+## Local Development
 
 If you wish to edit or build the source code locally on your machine:
 
@@ -193,9 +164,7 @@ Contributions, suggestions, and bug reports are welcome.
 3. Commit your changes
 4. Submit a pull request
 
----
 
-## Author
 
 Developed by Kodee Garcia.
 
