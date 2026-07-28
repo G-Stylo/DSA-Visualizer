@@ -1,6 +1,14 @@
-# DSA Visualizer
+# C++ DSA Visualizer
 
-An interactive Data Structures and Algorithms visualizer built with Modern C++ (C++17), Raylib, React, TypeScript, Vite, and Tailwind CSS. This project explores fundamental concepts in sorting, graph traversal, competitive programming problem solving, and state-machine simulation through real-time interactive visualizers.
+An interactive Data Structures and Algorithms visualizer built with Modern C++ (C++17), Raylib, React, TypeScript, Vite, and Tailwind CSS. This project runs directly as a static web application in any web browser without needing any local setup, server installation, or background runtime.
+
+---
+
+## 🌐 Live Web Page Access
+
+You can run and interact with the full application directly on the web without downloading or running software locally:
+
+**Live Web App:** [https://G-Stylo.github.io/cpp-dsa-visualizer/](https://G-Stylo.github.io/cpp-dsa-visualizer/)
 
 ---
 
@@ -118,59 +126,48 @@ src/
 
 ---
 
-## Installation
+## 🚀 Running on the Web
 
-Clone the repository:
+This application is built as a single-page client-side web app (SPA). It requires **no backend server** and **no local native dependencies**—all visualizers, state machines, and algorithms execute 100% in the client's web browser.
 
-```bash
-git clone https://github.com/G-Stylo/cpp-dsa-visualizer.git
-```
+### Automatic GitHub Pages Deployment
 
-Navigate into the project directory:
+The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) configured for automated deployment:
 
-```bash
-cd cpp-dsa-visualizer
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Open your browser and navigate to:
-
-```text
-http://localhost:5173
-```
+1. Push your raw source code to your GitHub repository:
+   ```bash
+   git add .
+   git commit -m "Deploy to GitHub Pages"
+   git push origin main
+   ```
+2. In your GitHub repository, navigate to **Settings** > **Pages**.
+3. Under **Source**, select **GitHub Actions**.
+4. GitHub Actions will automatically compile the project into static files (`dist/`) and publish them to your web URL:
+   `https://<your-username>.github.io/<repository-name>/`
 
 ---
 
-## Available Scripts
+## 🛠️ Optional Local Development
 
-### Start Development Server
+If you wish to edit or build the source code locally on your machine:
 
-```bash
-npm run dev
-```
-
-### Build for Production
-
-```bash
-npm run build
-```
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/G-Stylo/cpp-dsa-visualizer.git
+   cd cpp-dsa-visualizer
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Launch the development server:
+   ```bash
+   npm run dev
+   ```
+4. Build static web assets for production:
+   ```bash
+   npm run build
+   ```
 
 ---
 
