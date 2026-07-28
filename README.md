@@ -130,20 +130,15 @@ src/
 
 This application is built as a single-page client-side web app (SPA). It requires **no backend server** and **no local native dependencies**—all visualizers, state machines, and algorithms execute 100% in the client's web browser.
 
-### Automatic GitHub Pages Deployment
+### ⚙️ Custom GitHub Actions Workflow Features
 
-The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) configured for automated deployment:
+The custom workflow (`.github/workflows/deploy.yml`) handles continuous integration & deployment:
 
-1. Push your raw source code to your GitHub repository:
-   ```bash
-   git add .
-   git commit -m "Deploy to GitHub Pages"
-   git push origin main
-   ```
-2. In your GitHub repository, navigate to **Settings** > **Pages**.
-3. Under **Source**, select **GitHub Actions**.
-4. GitHub Actions will automatically compile the project into static files (`dist/`) and publish them to your web URL:
-   `https://<your-username>.github.io/<repository-name>/`
+- **🛡️ Quality & Type Check (`quality-check`)**: Automatically runs `npm run lint` (`tsc --noEmit`) to catch any TypeScript errors before building.
+- **🚀 Automated Build & Deployment (`build-and-deploy`)**: Compiles static web assets via Vite and deploys them directly to GitHub Pages.
+- **📄 SPA Routing Support**: Automatically generates `dist/404.html` so client-side navigation works without broken routes on page refresh.
+- **🔀 Pull Request Validation**: Runs quality checks on all Pull Requests targeting `main` or `master` to ensure code stability before merging.
+- **⚡ Manual Dispatch Trigger**: Allows manual deployment triggers from the GitHub **Actions** tab with configurable workflow inputs.
 
 ---
 
